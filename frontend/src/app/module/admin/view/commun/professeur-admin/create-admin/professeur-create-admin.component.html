@@ -1,0 +1,85 @@
+        <p-dialog [(visible)]="createDialog" [style]="{width: '70vw'}" header="{{'professeurTabPan' | translate}}" [modal]="true" styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+            <ng-template pTemplate="content" >
+                        <p-tabView>
+                            <p-tabPanel header="{{'professeurTabPan' | translate}}">
+                                <div class="grid">
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="1">{{'professeurNom' | translate}}<span style="color: red;">*</span></label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'professeurNom' | translate}}" id="1" [(ngModel)]="item.nom"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validProfesseurNom}"  />
+                                                    <small class='p-error' *ngIf='!validProfesseurNom'>Nom est obligatoire.</small>
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="2">{{'professeurPrenom' | translate}}<span style="color: red;">*</span></label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'professeurPrenom' | translate}}" id="2" [(ngModel)]="item.prenom"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validProfesseurPrenom}"  />
+                                                    <small class='p-error' *ngIf='!validProfesseurPrenom'>Prenom est obligatoire.</small>
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="3">{{'professeurEmail' | translate}}<span style="color: red;">*</span></label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'professeurEmail' | translate}}" id="3" [(ngModel)]="item.email"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validProfesseurEmail}"  />
+                                                    <small class='p-error' *ngIf='!validProfesseurEmail'>Email est obligatoire.</small>
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="4">{{'professeurCode' | translate}}<span style="color: red;">*</span></label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'professeurCode' | translate}}" id="4" [(ngModel)]="item.code"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validProfesseurCode}"  />
+                                                    <small class='p-error' *ngIf='!validProfesseurCode'>Code est obligatoire.</small>
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="5">{{'professeurPassword' | translate}}<span style="color: red;">*</span></label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'professeurPassword' | translate}}" id="5" [(ngModel)]="item.password"
+                                                            [ngClass]="{'ng-invalid ng-dirty' : !validProfesseurPassword}"  />
+                                                    <small class='p-error' *ngIf='!validProfesseurPassword'>Password est obligatoire.</small>
+                                                </div>
+
+
+
+                                            <div class="field col-11 md:col-5">
+                                                <label for="6">{{'professeurDiscipline' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="disciplines" [(ngModel)]="item.discipline" id="6" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="code" placeholder="{{'professeurDiscipline' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+                                                <div class="col-1">
+                                                    <label></label>
+                                                    <button pButton pRipple type="button" icon="pi pi-plus" (click)="openCreateDiscipline('Discipline')" class="p-button-success one-colonne-btn-success-align"></button>
+                                                </div>
+                                </div>
+                            </p-tabPanel>
+
+                        </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="grid-step">
+                        <div style="margin-left: auto;">
+                            <button pButton pRipple  label="{{'validate' | translate}}"  icon="pi pi-check" style="margin:10px" (click)="save()"></button>
+                        </div>
+                        <div>
+                            <button pButton pRipple  label="{{'cancel' | translate}}" icon="pi pi-times" class="p-button-outlined" (click)="hideCreateDialog()"></button>
+                        </div>
+
+                </div>
+            </ng-template>
+
+            <app-discipline-create-admin></app-discipline-create-admin>
+
+
+    </p-dialog>

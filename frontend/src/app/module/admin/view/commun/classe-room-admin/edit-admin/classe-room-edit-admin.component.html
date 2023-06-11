@@ -1,0 +1,60 @@
+        <p-dialog [(visible)]="editDialog" [style]="{width: '70vw'}" header="{{'classeRoomTabPan' | translate}}" [modal]="true" styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+            <ng-template pTemplate="content" >
+                <p-tabView>
+                    <p-tabPanel header="{{'classeRoomTabPan' | translate}}">
+                        <div class="grid">
+
+
+                                        <div class="field col-12 md:col-6">
+                                            <label for="1">{{'classeRoomLibelle' | translate}}<span style="color: red;">*</span></label>
+                                            <input   appendTo="body" class="mb-2 mr-2" type="text" pInputText placeholder="{{'classeRoomLibelle' | translate}}" id="1" [(ngModel)]="item.libelle"
+                                                    [ngClass]="{'ng-invalid ng-dirty' : !validClasseRoomLibelle}"  />
+                                            <small class='p-error' *ngIf='!validClasseRoomLibelle'>Libelle est obligatoire.</small>
+                                        </div>
+
+                                        <div class="field col-12 md:col-6">
+                                            <label for="2">{{'classeRoomCode' | translate}}<span style="color: red;">*</span></label>
+                                            <input   appendTo="body" class="mb-2 mr-2" type="text" pInputText placeholder="{{'classeRoomCode' | translate}}" id="2" [(ngModel)]="item.code"
+                                                    [ngClass]="{'ng-invalid ng-dirty' : !validClasseRoomCode}"  />
+                                            <small class='p-error' *ngIf='!validClasseRoomCode'>Code est obligatoire.</small>
+                                        </div>
+
+                                        <div class="field col-12 md:col-6">
+                                            <label for="3">{{'classeRoomAnneeScolaire' | translate}}<span style="color: red;">*</span></label>
+                                            <input   appendTo="body" class="mb-2 mr-2" type="text" pInputText placeholder="{{'classeRoomAnneeScolaire' | translate}}" id="3" [(ngModel)]="item.anneeScolaire"
+                                                    [ngClass]="{'ng-invalid ng-dirty' : !validClasseRoomAnneeScolaire}"  />
+                                            <small class='p-error' *ngIf='!validClasseRoomAnneeScolaire'>AnneeScolaire est obligatoire.</small>
+                                        </div>
+
+                                    <div class="field col-11 md:col-5">
+                                            <label for="4">{{'classeRoomNiveau' | translate}}<span style="color: red;">*</span></label>
+                                            <p-dropdown   appendTo="body" [options]="niveaus" [(ngModel)]="item.niveau" id="4"[filter]="true" filterMatchMode="contains"
+                                                    [showClear]="true" optionLabel="code" placeholder="{{'classeRoomNiveau' | translate}}" [ngClass]="{'ng-invalid ng-dirty' : !validClasseRoomNiveau}"  >
+                                            </p-dropdown>
+                                            <small class='p-error' *ngIf='!validClasseRoomNiveau'>Niveau est obligatoire.</small>
+                                        </div>
+                                        <div class="col-1">
+                                            <label></label>
+                                            <button pButton pRipple type="button" icon="pi pi-plus" (click)="openCreateNiveau('Niveau')" class="p-button-success one-colonne-btn-success-align"></button>
+                                        </div>
+                        </div>
+                    </p-tabPanel>
+
+                </p-tabView>
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="grid-footer">
+                        <div>
+                            <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-outlined" (click)="hideEditDialog()"></button>
+                        </div>
+                    <div>
+                        <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px" (click)="edit()"></button>
+                    </div>
+                </div>
+            </ng-template>
+
+                    <app-niveau-create-admin></app-niveau-create-admin>
+
+
+    </p-dialog>

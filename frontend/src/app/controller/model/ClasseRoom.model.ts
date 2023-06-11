@@ -1,0 +1,13 @@
+import {NiveauDto} from './Niveau.model';
+import {BaseDto} from 'src/app/zynerator/dto/BaseDto.model';
+
+
+export class ClasseRoomDto  extends BaseDto{
+
+    public id: number;
+    public libelle: string;
+    public code: string;
+    public anneeScolaire: string;
+    public niveau: NiveauDto ;
+
+}
